@@ -2,7 +2,7 @@
 The following is a recommended database setup process.
 
 ## Prerequisites
-Before you continue, you will need to have an instance on the PostgresSQL database running on a host. 
+Before you continue, you will need to have an instance on the PostgresSQL database running on a host.
 
 You will additionally need to have the following details handy:
 - Host name
@@ -27,7 +27,7 @@ CREATE DATABASE
 postgres=# CREATE DATABASE electron_release_server_sessions OWNER "electron_release_server_user";
 CREATE DATABASE
 postgres=#
-``` 
+```
 
 ## PostgreSQL
 Using the details listed in the prerequisites, connect to the postgres database using psql ([PostgreSQL interactive terminal](http://www.postgresql.org/docs/9.2/static/app-psql.html)).  
@@ -48,7 +48,7 @@ CREATE DATABASE electron_release_server_sessions OWNER "electron_release_server_
 After completing this section, you should now have
 1. host - hostname of your postgres database server
 2. user - username to be used by the application (electron_release_server_user)
-3. password - password to be used by the application 
+3. password - password to be used by the application
 4. server database - database name for the server (electron_release_server)
 5. server database - database name for the server (electron_release_server_sessions)
 > Hint: You now need to ensure that these settings are reflected in the `config/local.js` file.
@@ -84,3 +84,4 @@ psql electron_release_server_sessions < ./sql/sails-pg-session-support.sql postg
 ```
 > Hint: Use the same **process** as mentioned above to generate the session & JWT secret keys stored in `config/local.js`
 
+37215A469D01BD47BE4E80F94FDD652DDDF90A5CEE01FC903C2E283DD5FBADB9
