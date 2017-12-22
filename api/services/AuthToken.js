@@ -1,5 +1,7 @@
+const fs = require('fs');
+const path = require('path');
 const jwt = require('jsonwebtoken');
-const pub = fs.readFileSync(path.join(__dirname, '../keys/identity.pub'));
+const pub = fs.readFileSync(path.join(__dirname, '../../keys/identity.pub'));
 const options = {
     algorithm: 'RS256',
     issuer: 'identity.via.world'
