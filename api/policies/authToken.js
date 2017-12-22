@@ -21,17 +21,15 @@ module.exports = function(req, res, next) {
     } else {
       return res.forbidden('Wrong authorization format.');
     }
-  } else if (req.param('token')) {
-    token = req.param('token');
-    // We delete the token from param to not mess with blueprints
-    delete req.query.token;
   } else {
     return res.forbidden('No authorization header found.');
   }
 
-  AuthToken.verifyToken(token, function(err, decodedToken) {
+  AuthToken.verifyToken(token, function(err, user) {
     if (err) return res.forbidden('Invalid Token.');
-    req.token = decodedToken.sub;
+    if (!user.admin) return res.forbidden('You are not an authorized administrator.');
+    req.token = user;
+    req.user = user;
     next();
   });
 };
