@@ -18,7 +18,7 @@ angular.module('app.core.auth', [
     };
   })
   .config(['$httpProvider', 'jwtInterceptorProvider',
-    function($httpProvider, jwtInterceptorProvider) {
+    function($httpProvider, jwtOptionsProvider) {
       // Please note we're annotating the function so that the $injector works when the file is minified
         jwtOptionsProvider.config({
             tokenGetter: ['AuthService', function(AuthService) {
