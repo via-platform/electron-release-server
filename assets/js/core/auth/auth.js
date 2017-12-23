@@ -20,9 +20,11 @@ angular.module('app.core.auth', [
   .config(['$httpProvider', 'jwtInterceptorProvider',
     function($httpProvider, jwtInterceptorProvider) {
       // Please note we're annotating the function so that the $injector works when the file is minified
-      jwtInterceptorProvider.tokenGetter = ['AuthService', function(AuthService) {
-        return AuthService.getToken();
-      }];
+        jwtOptionsProvider.config({
+            tokenGetter: ['AuthService', function(AuthService) {
+                return AuthService.getToken();
+            }]
+        });
 
       $httpProvider.interceptors.push('jwtInterceptor');
     }
