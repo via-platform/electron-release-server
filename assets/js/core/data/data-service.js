@@ -537,10 +537,13 @@ angular.module('app.core.data.service', [
             asset: $sails.get('/api/asset')
         })
         .then(function(response) {
-          let {versions, channels} = response;
+          var versions = response.versions;
+          var channels = response.channels;
 
           self.data = versions.data.items;
-          self.availableChannels = channels.data.map(channel => channel.name);
+          self.availableChannels = channels.data.map(function(channel){
+              return channel.name;
+          });
 
           self.currentPage++;
           self.hasMore = versions.data.total > self.data.length;
