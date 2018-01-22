@@ -1,7 +1,7 @@
 angular.module('app.releases', [])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/releases/:channel?', {
+      .when('/:channel?', {
         templateUrl: 'js/download/download.html',
         controller: 'DownloadController as vm'
       });
@@ -32,9 +32,9 @@ angular.module('app.releases', [])
         return channel;
       };
 
-      self.availablePlatforms = DataService.availablePlatforms;
-      self.filetypes = DataService.filetypes;
-      self.availableChannels = DataService.availableChannels;
+      self.availablePlatforms = DataService.availablePlatforms || [];
+      self.filetypes = DataService.filetypes || [];
+      self.availableChannels = DataService.availableChannels || [];
 
       // Get selected channel from route or set to default (stable)
       self.channel = $routeParams.channel || self.setChannelParams(

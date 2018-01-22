@@ -531,34 +531,24 @@ angular.module('app.core.data.service', [
         self.loading = true;
         self.hasMore = false;
 
-        return Promise.all([
-            // Get the initial set of releases from the server.
-            // XXX This will also subscribe us to future changes regarding releases
-            $sails.get('/versions/sorted', {
-              page: self.currentPage
-            }),
+        return $q.all({
+            versions: $sails.get('/versions/sorted', {page: self.currentPage}),
+            channels: $sails.get('/api/channel'),
+            asset: $sails.get('/api/asset')
+        })
+        .then(function(response) {
+          let {versions, channels} = response;
 
-            // Get available channels
-            $sails.get('/api/channel'),
+          self.data = versions.data.items;
+          self.availableChannels = channels.data.map(channel => channel.name);
 
-            // Only sent to watch for asset updates
-            $sails.get('/api/asset')
-          ])
-          .then(function(responses) {
-            versions = responses[0];
-            channels = responses[1];
-            self.data = versions.data.items;
-            self.availableChannels = channels.data.map(function(channel) {
-              return channel.name;
-            });
+          self.currentPage++;
+          self.hasMore = versions.data.total > self.data.length;
+          self.loading = false;
+          PubSub.publish('data-change');
 
-            self.currentPage++;
-            self.hasMore = versions.data.total > self.data.length;
-            self.loading = false;
-            PubSub.publish('data-change');
-
-            $log.log('Should be subscribed!');
-          });
+          $log.log('Should be subscribed!');
+        });
       };
 
       self.loadMoreVersions = function() {

@@ -1,0 +1,208 @@
+*
+{
+    position: relative;
+    box-sizing: border-box;
+}
+
+html, body
+{
+    font-family: 'Inconsolata', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #AAA;
+    background: #222;
+}
+
+h1
+{
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+h2
+{
+    font-family: 'Roboto';
+    font-size: 20px;
+    line-height: 28px;
+}
+
+h3
+{
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.flex
+{
+    display: flex;
+}
+
+.flex-align
+{
+    align-items: center;
+}
+
+.ff
+{
+    flex: 1;
+}
+
+.constrain
+{
+    padding: 0 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header
+{
+    .navbar
+    {
+        display: flex;
+        align-items: center;
+        padding: 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .wordmark
+    {
+        width: 74px;
+        height: 19px;
+        background: url('../images/wordmark-light.svg') 0 0 no-repeat;
+        background-size: auto 19px;
+    }
+
+    .out
+    {
+        color: #0BD99B;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        margin-left: 30px;
+        display: block;
+    }
+
+    .title
+    {
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 700;
+        margin-left: 15px;
+    }
+}
+
+.footer
+{
+    border-top: 2px solid #333;
+
+    .constrain
+    {
+        padding: 60px 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .wordmark
+    {
+        width: 74px;
+        height: 19px;
+        background: url('../images/wordmark-light.svg') 0 0 no-repeat;
+        background-size: auto 19px;
+    }
+
+    .copyright, .location
+    {
+        font-weight: 700;
+        color: #999;
+        margin-right: 50px;
+    }
+
+    .location
+    {
+        margin-right: 30px;
+    }
+
+    .social
+    {
+        width: 40px;
+        height: 40px;
+        display: block;
+        margin-left: 20px;
+
+        &.reddit
+        {
+            background: url('../images/reddit.svg') 7px 7px no-repeat;
+            background-size: 26px auto;
+
+            &:hover
+            {
+                background-image: url('../images/reddit-via.svg');
+            }
+        }
+
+        &.slack
+        {
+            background: url('../images/slack.svg') -5px -5px no-repeat;
+            background-size: 50px auto;
+
+            &:hover
+            {
+                background-image: url('../images/slack-via.svg');
+            }
+        }
+
+        &.twitter
+        {
+            background: url('../images/twitter.svg') 8px 10px no-repeat;
+            background-size: 25px auto;
+
+
+            &:hover
+            {
+                background-image: url('../images/twitter-via.svg');
+            }
+        }
+    }
+}
+
+.available-releases
+{
+    border-bottom: 2px solid #333;
+    padding: 15px 0;
+
+    h2
+    {
+        color: #AAA;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 0;
+        font-weight: 700;
+        font-family: 'Inconsolata';
+    }
+
+    .channel
+    {
+        font-size: 15px;
+        color: #AAA;
+        font-weight: 700;
+    }
+
+    select
+    {
+        margin-left: 16px;
+        border: 2px solid #666;
+        background: #222;
+        color: #FFF;
+        font-size: 15px;
+        font-weight: 700;
+        outline: 0;
+        border-radius: 3px;
+        width: 90px;
+        height: 26px;
+    }
+}

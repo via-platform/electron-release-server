@@ -1,13 +1,12 @@
-.row.text-center
-  .col-md-12
-    h2 Download our Electron App 
-      small.pull-right
-        | Channel: 
-        select(
-          ng-model='vm.channel'
-          ng-options='channel for channel in vm.availableChannels'
-          ng-change='vm.getLatestReleases()'
-          )
+.flex.flex-align.available-releases
+  h2 Available Downloads
+  .ff
+  div.channel Release Channel
+  select(
+    ng-model='vm.channel'
+    ng-options='channel for channel in vm.availableChannels'
+    ng-change='vm.getLatestReleases()'
+    )
 .row.text-center.padding-top-20(ng-if="vm.latestReleases")
   .col-md-12(ng-if="vm.platform === 'osx'")
     .jumbotron

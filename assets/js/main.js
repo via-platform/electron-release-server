@@ -1,13 +1,12 @@
 angular.module('app', [
     'app.core',
     'app.admin',
-    'app.home',
     'app.releases'
   ])
   .config(['$routeProvider', '$locationProvider', 'NotificationProvider',
     function($routeProvider, $locationProvider, NotificationProvider) {
       $routeProvider.otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
       });
 
       // Use the HTML5 History API
