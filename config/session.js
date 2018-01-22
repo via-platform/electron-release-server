@@ -16,4 +16,5 @@ module.exports.session = {
   // XXX: Enable this if you are using postgres as your database
   // If so, be sure to run the sql command detailed here: https://github.com/ravitej91/sails-pg-session
   // adapter: 'sails-pg-session'
+	secret: 'e520d99e37e4ab368d62c12b50dc27fffefaa9baff7ae36e'
 };

@@ -162,7 +162,8 @@ module.exports = {
     // Create data object (monolithic combination of all parameters)
     // Omit the blacklisted params (like JSONP callback param, etc.)
     var data = actionUtil.parseValues(req);
-
+console.log('GOT HERE');
+console.log(data);
     if (!data.version) {
       return res.badRequest('A version is required.');
     }
@@ -186,7 +187,10 @@ module.exports = {
 
     req.file('file').upload(sails.config.files,
       function whenDone(err, uploadedFiles) {
-        if (err) {
+console.log('Got here too');
+
+if (err) {
+console.log(err);
           return res.negotiate(err);
         }
 
