@@ -13,7 +13,7 @@ angular.module('app.releases', [])
       $scope, $routeParams, $route, PubSub, deviceDetector, DataService
     ) {
       var self = this;
-      self.showAllVersions = false;
+      self.showAllVersions = true;
       $scope.hasMoreVersions = DataService.hasMore;
 
       self.platform = deviceDetector.os;
