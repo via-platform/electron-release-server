@@ -64,17 +64,17 @@ h3
     {
         display: flex;
         align-items: center;
-        padding: 50px;
+        padding: 20px 50px;
         max-width: 1400px;
         margin: 0 auto;
     }
 
     .wordmark
     {
-        width: 74px;
-        height: 19px;
-        background: url('../images/wordmark-light.svg') 0 0 no-repeat;
-        background-size: auto 19px;
+        width: 52px;
+        height: 52px;
+        background: url('../images/wordmark-light.svg') left center no-repeat;
+        background-size: 52px auto;
     }
 
     .out
@@ -89,10 +89,10 @@ h3
 
     .title
     {
-        color: #FFF;
+        color: #999;
         font-size: 16px;
         font-weight: 700;
-        margin-left: 15px;
+        margin-left: 20px;
     }
 }
 
@@ -109,10 +109,10 @@ h3
 
     .wordmark
     {
-        width: 74px;
-        height: 19px;
-        background: url('../images/wordmark-light.svg') 0 0 no-repeat;
-        background-size: auto 19px;
+        width: 52px;
+        height: 52px;
+        background: url('../images/wordmark-light.svg') left center no-repeat;
+        background-size: 52px auto;
     }
 
     .copyright, .location
@@ -177,8 +177,8 @@ h3
 
     h2
     {
-        color: #AAA;
-        font-size: 18px;
+        color: #FFF;
+        font-size: 16px;
         line-height: 24px;
         margin: 0;
         font-weight: 700;
