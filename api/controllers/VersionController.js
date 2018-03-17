@@ -59,10 +59,7 @@ module.exports = {
         var end = start + sails.config.views.pageSize;
         var items = versions
           .sort(function (a, b) {
-              const am = a.name.indexOf('-alpha') === -1 ? `${a.name}-alpha` : a.name;
-              const bm = b.name.indexOf('-alpha') === -1 ? `${b.name}-alpha` : b.name;
-
-            return -compareVersions(am, bm);
+            return -compareVersions(a.name, b.name);
           })
           .slice(start, end);
 
