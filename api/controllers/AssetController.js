@@ -9,6 +9,7 @@ var _ = require('lodash');
 var path = require('path');
 var actionUtil = require('sails/lib/hooks/blueprints/actionUtil');
 var Promise = require('bluebird');
+var axios = require('axios');
 
 var SEGMENTS_TO_REMOVE = _.concat(_.pickBy(PlatformService, _.isString), [
   'x64',
@@ -162,8 +163,7 @@ module.exports = {
     // Create data object (monolithic combination of all parameters)
     // Omit the blacklisted params (like JSONP callback param, etc.)
     var data = actionUtil.parseValues(req);
-console.log('GOT HERE');
-console.log(data);
+
     if (!data.version) {
       return res.badRequest('A version is required.');
     }
@@ -187,10 +187,8 @@ console.log(data);
 
     req.file('file').upload(sails.config.files,
       function whenDone(err, uploadedFiles) {
-console.log('Got here too');
 
-if (err) {
-console.log(err);
+        if (err) {
           return res.negotiate(err);
         }
 
@@ -245,6 +243,9 @@ console.log(err);
                   }
                   Asset.publishCreate(newInstance, !req.options.mirror && req);
                 }
+
+                //Send a slack message
+                axios.post('https://hooks.slack.com/services/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', {text: `New asset uploaded: ${uploadedFile.filename} (${uploadedFile.size})`});
 
                 // Send JSONP-friendly response if it's supported
                 res.created(newInstance);

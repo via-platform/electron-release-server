@@ -13,6 +13,19 @@ var compareVersions = require('compare-versions');
 
 module.exports = {
 
+    afterCreate: function(version, next){
+        //Send a slack message
+        const text = `New version created: ${version.name}`;
+
+        if(version.notes){
+            text += '\n Changelog:';
+            text += version.notes.split('\n').map(s => `> ${s}`).join('\n');
+        }
+
+        axios.post('https://hooks.slack.com/services/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', {text});
+        next();
+    },
+
   /**
    * Redirect the update request to the appropriate endpoint
    * (GET /update)
@@ -125,7 +138,7 @@ module.exports = {
   general: function(req, res) {
     var platform = req.param('platform');
     var version = req.param('version');
-    var channel = req.param('channel') || 'stable';
+    var channel = 'alpha'; //req.param('channel') || 'stable';
 
     if (!version) {
       return res.badRequest('Requires `version` parameter');
@@ -249,7 +262,7 @@ module.exports = {
   windows: function(req, res) {
     var platform = req.param('platform');
     var version = req.param('version');
-    var channel = req.param('channel') || 'stable';
+    var channel = 'alpha'; //req.param('channel') || 'stable';
 
     if (!version) {
       return res.badRequest('Requires `version` parameter');
@@ -377,7 +390,7 @@ module.exports = {
    */
   electronUpdaterWin: function(req, res) {
     var platform = req.param('platform');
-    var channel = req.param('channel') || 'stable';
+    var channel = 'alpha'; //req.param('channel') || 'stable';
 
     if (!platform) {
       return res.badRequest('Requires `platform` parameter');
@@ -449,7 +462,7 @@ module.exports = {
    */
   electronUpdaterMac: function(req, res) {
     var platform = req.param('platform');
-    var channel = req.param('channel') || 'stable';
+    var channel = 'alpha'; //req.param('channel') || 'stable';
 
     if (!platform) {
       return res.badRequest('Requires `platform` parameter');
